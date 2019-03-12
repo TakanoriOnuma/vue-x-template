@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>x-template</title>
+</head>
+<body>
+  <!-- マウント先を用意 -->
+  <div id="app"></div>
+
+  <!-- ライブラリの読み込み -->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <!-- JSコード -->
+  <script type="text/javascript">
+    $.ajax({
+      url: './templates/template.tpl',
+      type: 'GET'
+    })
+      .done((data) => {
+        // テンプレートを登録する
+        const $template = $('<script>')
+          .attr('id', 'template')
+          .attr('type', 'text/x-template')
+          .html(data);
+        $('body').append($template);
+
+        // Vue.jsを起動する
+        new Vue({
+          el: '#app',
+          // dataをそのまま渡す方法もある
+          // template: data,
+          template: document.getElementById('template').innerHTML,
+          data() {
+            return {
+              name: 'Yamada Taro',
+              age: 35
+            };
+          }
+        });
+      });
+  </script>
+</body>
+</html>

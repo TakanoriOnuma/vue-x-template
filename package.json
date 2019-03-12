@@ -1,0 +1,14 @@
+{
+  "name": "x-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync --server --watch \"**/*\""
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.26.3"
+  }
+}
